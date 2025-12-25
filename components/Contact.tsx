@@ -13,7 +13,8 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
     setStatus('idle');
 
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const apiUrl = (import.meta as any).env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -63,7 +64,7 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
         <p className="text-xl opacity-60 leading-relaxed max-w-lg">
           {t.contact.sidebar.desc}
         </p>
-        
+
         <div className="space-y-6 pt-8">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-crimson-600">
@@ -105,8 +106,8 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
               </div>
               <h3 className="text-2xl font-bold mb-2">{t.contact.form.successTitle}</h3>
               <p className="opacity-60">{t.contact.form.successText}</p>
-              <button 
-                onClick={resetStatus} 
+              <button
+                onClick={resetStatus}
                 className="mt-8 text-sm font-bold text-crimson-600 uppercase tracking-widest hover:underline"
               >
                 {t.contact.form.another}
@@ -117,23 +118,23 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase opacity-40 px-1">{t.contact.form.name}</label>
-                  <input 
+                  <input
                     required
-                    type="text" 
+                    type="text"
                     autoComplete="name"
                     value={form.name}
-                    onChange={e => setForm({...form, name: e.target.value})}
+                    onChange={e => setForm({ ...form, name: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase opacity-40 px-1">{t.contact.form.email}</label>
-                  <input 
+                  <input
                     required
-                    type="email" 
+                    type="email"
                     autoComplete="email"
                     value={form.email}
-                    onChange={e => setForm({...form, email: e.target.value})}
+                    onChange={e => setForm({ ...form, email: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors"
                   />
                 </div>
@@ -141,19 +142,19 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase opacity-40 px-1">{t.contact.form.company}</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={form.company}
-                    onChange={e => setForm({...form, company: e.target.value})}
+                    onChange={e => setForm({ ...form, company: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase opacity-40 px-1">{t.contact.form.budget}</label>
                   <div className="relative">
-                    <select 
+                    <select
                       value={form.budget}
-                      onChange={e => setForm({...form, budget: e.target.value})}
+                      onChange={e => setForm({ ...form, budget: e.target.value })}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors appearance-none cursor-pointer"
                     >
                       <option value="" disabled>Select range...</option>
@@ -169,11 +170,11 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase opacity-40 px-1">{t.contact.form.message}</label>
-                <textarea 
+                <textarea
                   required
                   rows={4}
                   value={form.message}
-                  onChange={e => setForm({...form, message: e.target.value})}
+                  onChange={e => setForm({ ...form, message: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors resize-none"
                   placeholder="Tell us about your goals..."
                 />
@@ -186,7 +187,7 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
                 </div>
               )}
 
-              <button 
+              <button
                 disabled={loading}
                 className="w-full bg-crimson-600 hover:bg-crimson-700 disabled:opacity-50 text-white font-bold py-4 rounded-xl shadow-xl shadow-crimson-600/20 flex items-center justify-center gap-3 transition-all active:scale-[0.98]"
               >

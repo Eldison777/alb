@@ -10,6 +10,8 @@ import Team from './components/Team';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Blog from './components/Blog';
+import Pricing from './components/Pricing';
+import Process from './components/Process';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -44,16 +46,18 @@ const App: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       <Navbar lang={lang} toggleLang={toggleLang} theme={theme} toggleTheme={toggleTheme} t={t} />
-      
+
       <main className="space-y-24 pb-24">
         <Hero t={t} />
         <section id="services" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">
           <BentoServices t={t} />
         </section>
-        
-        <section id="impact" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">
+
+        <section id="about" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">
           <ImpactModel t={t} theme={theme} />
         </section>
+
+        <Process t={t} />
 
         <section id="work" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">
           <CaseStudies t={t} />
@@ -69,6 +73,10 @@ const App: React.FC = () => {
 
         <section id="faq" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">
           <FAQ t={t} />
+        </section>
+
+        <section id="pricing" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">
+          <Pricing t={t} />
         </section>
 
         <section id="contact" className="px-6 md:px-12 max-w-7xl mx-auto scroll-mt-24">

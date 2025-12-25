@@ -64,6 +64,31 @@ export const translations = {
       subtitle: "A core team of specialized engineers and designers obsessed with performance and clarity.",
       cta: "Join the Team"
     },
+    process: {
+      title: "Our Lifecycle",
+      steps: [
+        {
+          id: "01",
+          title: "Architecture",
+          desc: "Defining the blueprint for infinite scale."
+        },
+        {
+          id: "02",
+          title: "Development",
+          desc: "Rapid prototyping and production coding."
+        },
+        {
+          id: "03",
+          title: "QA & Audit",
+          desc: "Stress testing and security hardening."
+        },
+        {
+          id: "04",
+          title: "Launch",
+          desc: "Global deployment with 99.9% uptime."
+        }
+      ]
+    },
     contact: {
       form: {
         name: "Full Name",
@@ -91,6 +116,18 @@ export const translations = {
       subscribe: "Join",
       subSuccess: "Thanks for joining!",
       rights: "© 2025 AlbShift Digital. All rights reserved. Made with ❤️ in Prishtina."
+    },
+    pricing: {
+      badge: "Transparent Value",
+      title: "Productized Packages",
+      desc: "High-velocity engineering with fixed scopes. No scope creep, no hidden costs.",
+      starter: "Starter MVP",
+      growth: "Growth SaaS",
+      scale: "Enterprise Scale",
+      timeline: "Timeline",
+      weeks: "Weeks",
+      cta: "Get Started",
+      topChoice: "Top Choice"
     }
   },
   sq: {
@@ -157,6 +194,31 @@ export const translations = {
       subtitle: "Një ekip bërthamë inxhinierësh dhe dizajnerësh të specializuar, të fiksuar pas performancës dhe qartësisë.",
       cta: "Bashkohu me Ekipin"
     },
+    process: {
+      title: "Cikli ynë",
+      steps: [
+        {
+          id: "01",
+          title: "Arkitektura",
+          desc: "Përcaktimi i projektit për shkallëzim pafund."
+        },
+        {
+          id: "02",
+          title: "Zhvillimi",
+          desc: "Prototipizim i shpejtë dhe kodim profesional."
+        },
+        {
+          id: "03",
+          title: "QA & Audit",
+          desc: "Testim stresi dhe forcim i sigurisë."
+        },
+        {
+          id: "04",
+          title: "Lançimi",
+          desc: "Deplojim global me 99.9% disponueshmëri."
+        }
+      ]
+    },
     contact: {
       form: {
         name: "Emri i Plotë",
@@ -183,7 +245,19 @@ export const translations = {
       newsletter: "Abonohuni për njohuri inxhinierike",
       subscribe: "Join",
       subSuccess: "Faleminderit!",
-      rights: "© 2025 AlbShift Digital. Të gjitha të drejtat e rezervuara. Prishtinë."
+      rights: "© 2025 AlbShift Digital. All rights reserved. Prishtinë."
+    },
+    pricing: {
+      badge: "Vlerë Transparente",
+      title: "Paketat e Produkteve",
+      desc: "Inxhinieri me shpejtësi të lartë dhe kosto fikse. Pa kosto të fshehura.",
+      starter: "Starter MVP",
+      growth: "Growth SaaS",
+      scale: "Enterprise Scale",
+      timeline: "Afati",
+      weeks: "Javë",
+      cta: "Fillo Tani",
+      topChoice: "Zgjedhja Kryesore"
     }
   }
 };

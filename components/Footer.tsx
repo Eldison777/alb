@@ -9,7 +9,7 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
+
     setLoading(true);
     try {
       const res = await fetch('http://localhost:3001/api/subscribe', {
@@ -45,8 +45,8 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
             </p>
           </div>
           <div className="relative z-10 shrink-0">
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="px-10 py-5 bg-crimson-600 text-white rounded-[1.2rem] font-black text-xl flex items-center gap-4 hover:bg-crimson-700 transition-all shadow-2xl shadow-crimson-600/40 active:scale-95 group-hover:-translate-y-1"
             >
               {t.nav.cta} <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
@@ -70,7 +70,7 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
             <p className="opacity-40 text-base leading-relaxed max-w-sm">
               Premium engineering studio delivering high-performance SaaS solutions and UI systems for the next generation of digital products.
             </p>
-            
+
             {/* Newsletter Subscription */}
             <div className="pt-4 space-y-4">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-30">
@@ -83,15 +83,15 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex gap-2 max-w-sm p-1.5 glass rounded-2xl border border-white/5 focus-within:border-crimson-600/30 transition-all">
-                  <input 
+                  <input
                     required
-                    type="email" 
-                    placeholder="name@email.com" 
+                    type="email"
+                    placeholder="name@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="flex-grow bg-transparent border-none rounded-xl px-4 py-2 text-sm font-medium focus:ring-0 focus:outline-none placeholder:opacity-40"
                   />
-                  <button 
+                  <button
                     disabled={loading}
                     className="px-6 py-2.5 bg-crimson-600 text-white rounded-[0.8rem] font-black text-sm hover:bg-crimson-700 transition-all disabled:opacity-50 shadow-lg shadow-crimson-600/20"
                   >
@@ -101,14 +101,14 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
               )}
             </div>
           </div>
-          
+
           {/* Link Columns */}
           <div className="space-y-8">
             <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">Company</h4>
             <ul className="space-y-5 text-sm font-bold opacity-60">
-              <li><a href="#" className="hover:text-crimson-600 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-crimson-600 transition-colors">Our Team</a></li>
-              <li><a href="#" className="hover:text-crimson-600 transition-colors">Careers</a></li>
+              <li><a href="#about" className="hover:text-crimson-600 transition-colors">About Us</a></li>
+              <li><a href="#team" className="hover:text-crimson-600 transition-colors">Our Team</a></li>
+              <li><a href="#blog" className="hover:text-crimson-600 transition-colors">Careers</a></li>
               <li><a href="#contact" className="hover:text-crimson-600 transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -126,9 +126,9 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
           <div className="space-y-8">
             <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">Legal</h4>
             <ul className="space-y-5 text-sm font-bold opacity-60">
-              <li><a href="#" className="hover:text-crimson-600 transition-colors">Privacy</a></li>
-              <li><a href="#" className="hover:text-crimson-600 transition-colors">Terms</a></li>
-              <li><a href="#" className="hover:text-crimson-600 transition-colors">Security</a></li>
+              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">Privacy</a></li>
+              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">Terms</a></li>
+              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">Security</a></li>
             </ul>
           </div>
         </div>

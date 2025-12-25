@@ -33,26 +33,26 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
     <div className="relative py-24">
       <div className="text-center max-w-3xl mx-auto mb-24" data-scroll>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-crimson-600/10 text-crimson-600 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-          <Star size={12} fill="currentColor" /> Transparent Value
+          <Star size={12} fill="currentColor" /> {t.pricing.badge}
         </div>
-        <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">Productized Packages<span className="text-crimson-600">.</span></h2>
+        <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">{t.pricing.title}<span className="text-crimson-600">.</span></h2>
         <p className="text-xl opacity-60 leading-relaxed">
-          High-velocity engineering with fixed scopes. No scope creep, no hidden costs.
+          {t.pricing.desc}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 relative z-10" data-scroll-stagger>
         {tiers.map((tier, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className={`group relative glass rounded-[3rem] p-12 border transition-all duration-700 cursor-default ${tier.popular ? 'border-crimson-600/50 scale-105 z-10 shadow-[0_40px_100px_-20px_rgba(220,38,38,0.2)] hover:scale-[1.07]' : 'border-white/5 opacity-90 hover:opacity-100 hover:border-crimson-600/30 hover:scale-[1.02] hover:-translate-y-2'}`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-crimson-600 text-white text-[10px] font-black uppercase px-6 py-2 rounded-full tracking-[0.2em] shadow-2xl flex items-center gap-2 animate-bounce">
-                <Zap size={10} fill="currentColor" /> Top Choice
+                <Zap size={10} fill="currentColor" /> {t.pricing.topChoice}
               </div>
             )}
-            
+
             <div className="mb-10">
               <h3 className="text-2xl font-black mb-2 tracking-tight group-hover:text-crimson-600 transition-colors duration-500">{tier.name}</h3>
               <div className="flex items-baseline gap-2">
@@ -80,8 +80,8 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
               ))}
             </ul>
 
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className={`block w-full text-center py-5 rounded-2xl font-black text-lg transition-all duration-500 ${tier.popular ? 'bg-crimson-600 text-white shadow-xl shadow-crimson-600/30 hover:shadow-crimson-600/50 hover:bg-crimson-700' : 'glass hover:bg-white/10 hover:border-crimson-600/20 hover:text-crimson-600'}`}
             >
               {tier.cta}
@@ -89,7 +89,7 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
           </div>
         ))}
       </div>
-      
+
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-crimson-600/[0.03] blur-[140px] rounded-full -z-10 animate-pulse-soft pointer-events-none"></div>
     </div>
   );

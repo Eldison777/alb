@@ -5,9 +5,9 @@ const Hero: React.FC<{ t: any }> = ({ t }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section ref={containerRef} className="relative pt-40 lg:pt-64 pb-32 px-6 overflow-hidden">
+    <section id="home" ref={containerRef} className="relative pt-40 lg:pt-64 pb-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-        
+
         {/* Animated Badge */}
         <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full border dark:border-white/10 border-black/10 glass text-crimson-600 text-[10px] font-black uppercase tracking-[0.25em] mb-12 animate-reveal-up">
           <Zap size={14} className="animate-pulse" />
@@ -36,15 +36,15 @@ const Hero: React.FC<{ t: any }> = ({ t }) => {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-6 mb-36 animate-reveal-up" style={{ animationDelay: '0.4s' }}>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="group px-10 py-5 bg-crimson-600 hover:bg-crimson-700 text-white rounded-2xl font-black text-xl flex items-center gap-3 transition-all shadow-2xl shadow-crimson-600/20 active:scale-95"
           >
             {t.hero.ctaPrimary}
             <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
           </a>
-          <a 
-            href="#work" 
+          <a
+            href="#work"
             className="group px-10 py-5 glass dark:hover:bg-white/5 hover:bg-black/5 rounded-2xl font-black text-xl flex items-center gap-4 transition-all active:scale-95"
           >
             <div className="w-10 h-10 rounded-full bg-crimson-600/20 flex items-center justify-center text-crimson-600">

@@ -31,10 +31,11 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t
 
   const navItems = [
     { name: t.nav.services, href: "#services" },
+    { name: t.process.title, href: "#process" },
     { name: t.nav.work, href: "#work" },
     { name: t.nav.team, href: "#team" },
+    { name: t.pricing.title, href: "#pricing" },
     { name: t.nav.blog, href: "#blog" },
-    { name: t.nav.faq, href: "#faq" },
   ];
 
   return (
@@ -54,9 +55,9 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t
           {/* Centered Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
-              <a 
-                key={item.name} 
-                href={item.href} 
+              <a
+                key={item.name}
+                href={item.href}
                 className="text-sm font-bold opacity-60 hover:opacity-100 dark:text-white text-slate-900 transition-all tracking-tight hover:text-crimson-600"
               >
                 {item.name}
@@ -67,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t
           {/* Right Controls */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1">
-              <button 
+              <button
                 onClick={toggleLang}
                 className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors flex items-center gap-2 group"
                 aria-label="Toggle Language"
@@ -75,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t
                 <Globe size={18} className="opacity-50 group-hover:opacity-100 transition-opacity" />
                 <span className="text-xs font-black uppercase opacity-60 group-hover:opacity-100">{lang}</span>
               </button>
-              <button 
+              <button
                 onClick={toggleTheme}
                 className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-all"
                 aria-label="Toggle Theme"
@@ -83,15 +84,15 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t
                 {theme === 'dark' ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
               </button>
             </div>
-            
-            <a 
+
+            <a
               href="#contact"
               className="hidden sm:block px-6 py-2.5 bg-crimson-600 hover:bg-crimson-700 text-white rounded-[1rem] text-sm font-black transition-all shadow-lg shadow-crimson-600/20 active:scale-95 whitespace-nowrap"
             >
               {t.nav.cta}
             </a>
-            
-            <button 
+
+            <button
               className="md:hidden p-2 opacity-60 hover:opacity-100"
               onClick={() => mobileOpen ? closeMobileMenu() : setMobileOpen(true)}
             >
@@ -106,16 +107,16 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t
         <div className={`md:hidden absolute top-full left-0 right-0 px-6 pt-3 ${isAnimatingOut ? 'animate-reveal-down' : 'animate-reveal-up'}`}>
           <div className="glass rounded-[2rem] border dark:border-white/10 border-black/10 shadow-2xl flex flex-col p-8 gap-6">
             {navItems.map((item) => (
-              <a 
-                key={item.name} 
-                href={item.href} 
+              <a
+                key={item.name}
+                href={item.href}
                 className="text-xl font-black tracking-tight border-b dark:border-white/5 border-black/5 pb-4 hover:text-crimson-600 transition-colors"
                 onClick={closeMobileMenu}
               >
                 {item.name}
               </a>
             ))}
-            <a 
+            <a
               href="#contact"
               className="w-full text-center px-6 py-4 bg-crimson-600 text-white rounded-[1rem] font-black text-lg shadow-2xl shadow-crimson-600/30"
               onClick={closeMobileMenu}
