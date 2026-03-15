@@ -182,3 +182,4 @@ VITE_API_URL=http://localhost:3001
 | Backend | Express + Node.js |
 | Database | PostgreSQL |
 | i18n | Built-in (English + Albanian) |
+"# AlbShift_05" 
