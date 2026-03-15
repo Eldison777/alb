@@ -1,82 +1,112 @@
-import React, { useRef } from 'react';
-import { Zap, ArrowRight, Play } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Bot, Code2, Users2 } from 'lucide-react';
+
+const cards = [
+  {
+    icon: Code2,
+    eyebrow: 'Software',
+    title: 'Digital products and internal tools',
+  },
+  {
+    icon: Bot,
+    eyebrow: 'AI Automation',
+    title: 'Workflows that remove repetitive friction',
+  },
+  {
+    icon: Users2,
+    eyebrow: 'Community',
+    title: 'Programs that turn audiences into ecosystems',
+  },
+];
 
 const Hero: React.FC<{ t: any }> = ({ t }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <section id="home" ref={containerRef} className="relative pt-40 lg:pt-64 pb-32 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+    <section id="home" className="relative pt-28 sm:pt-36 lg:pt-44 pb-14 sm:pb-20 px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-8 xl:gap-10 items-start">
+          <div className="max-w-4xl">
+            <div className="intro-up inline-flex items-center max-w-full px-4 py-2 rounded-full border border-crimson-600/20 bg-crimson-600/[0.06] text-crimson-500 text-[10px] font-black uppercase tracking-[0.28em] mb-6 sm:mb-8">
+              <span className="break-words">{t.hero.badge}</span>
+            </div>
 
-        {/* Animated Badge */}
-        <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full border dark:border-white/10 border-black/10 glass text-crimson-600 text-[10px] font-black uppercase tracking-[0.25em] mb-12 animate-reveal-up">
-          <Zap size={14} className="animate-pulse" />
-          <span>{t.hero.badge}</span>
-        </div>
+            <h1 className="intro-up intro-delay-1 text-[2.7rem] sm:text-6xl md:text-7xl xl:text-[5.5rem] font-black tracking-[-0.05em] leading-[0.94] mb-5 sm:mb-7">
+              Build modern software.
+              <span className="block text-white/55">Automate the work no one should do by hand.</span>
+            </h1>
 
-        {/* Dynamic Headline - Simplified to prevent jitter */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-12 max-w-6xl animate-reveal-up">
-          {t.hero.headline.split(' ').map((word: string, i: number) => {
-            const cleanWord = word.toLowerCase().replace(/[.,!]/g, '');
-            const isAccent = cleanWord === 'saas' || cleanWord === 'velocity' || cleanWord === 'produkte' || cleanWord === 'shpejtësi';
-            return (
-              <span key={i} className="inline-block mr-4 md:mr-6 last:mr-0">
-                <span className={isAccent ? "text-crimson-600 italic font-black" : "dark:text-white text-slate-950 transition-colors"}>
-                  {word}
+            <p className="intro-up intro-delay-2 text-base sm:text-xl md:text-2xl text-white/72 max-w-2xl leading-relaxed mb-8 sm:mb-10">
+              {t.hero.subheadline}
+            </p>
+
+            <div className="intro-up intro-delay-3 flex flex-wrap gap-2.5 mb-8 sm:mb-10">
+              {t.hero.trust.map((item: string) => (
+                <span
+                  key={item}
+                  className="px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.04] text-[10px] sm:text-xs font-black uppercase tracking-[0.16em] text-white/70"
+                >
+                  {item}
                 </span>
-              </span>
-            );
-          })}
-        </h1>
-
-        {/* Subheadline with simple fade-in */}
-        <p className="text-xl md:text-2xl opacity-60 dark:text-white text-slate-900 max-w-2xl mb-16 leading-relaxed font-medium animate-reveal-up" style={{ animationDelay: '0.2s' }}>
-          {t.hero.subheadline}
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-6 mb-36 animate-reveal-up" style={{ animationDelay: '0.4s' }}>
-          <a
-            href="#contact"
-            className="group px-10 py-5 bg-crimson-600 hover:bg-crimson-700 text-white rounded-2xl font-black text-xl flex items-center gap-3 transition-all shadow-2xl shadow-crimson-600/20 active:scale-95"
-          >
-            {t.hero.ctaPrimary}
-            <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a
-            href="#work"
-            className="group px-10 py-5 glass dark:hover:bg-white/5 hover:bg-black/5 rounded-2xl font-black text-xl flex items-center gap-4 transition-all active:scale-95"
-          >
-            <div className="w-10 h-10 rounded-full bg-crimson-600/20 flex items-center justify-center text-crimson-600">
-              <Play size={16} fill="currentColor" />
+              ))}
             </div>
-            <span className="dark:text-white text-slate-900 transition-colors">{t.hero.ctaSecondary}</span>
-          </a>
-        </div>
 
-        {/* Metric Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 w-full max-w-5xl border-t dark:border-white/5 border-black/5 pt-20 animate-reveal-up" style={{ animationDelay: '0.6s' }}>
-          {[
-            { label: t.hero.metric1, val: "99/100" },
-            { label: t.hero.metric2, val: "99.9%" },
-            { label: t.hero.metric3, val: "8 Wks" },
-            { label: "Client NPS", val: "98/100" }
-          ].map((m, i) => (
-            <div key={i} className="flex flex-col items-center group">
-              <span className="text-4xl lg:text-6xl font-black text-crimson-600 mb-3 group-hover:text-crimson-500 transition-colors">
-                {m.val}
-              </span>
-              <span className="text-[11px] font-black uppercase tracking-[0.2em] opacity-30 dark:text-white text-slate-900 transition-colors">
-                {m.label}
-              </span>
+            <div className="intro-up intro-delay-4 flex flex-col sm:flex-row gap-3.5 sm:gap-4 mb-10 sm:mb-12">
+              <a
+                href="#contact"
+                className="group h-14 sm:h-16 px-7 rounded-[1.25rem] bg-crimson-600 text-white font-black text-lg inline-flex items-center justify-center gap-3 shadow-[0_16px_50px_-20px_rgba(220,38,38,0.8)] hover:bg-crimson-700 transition-all hover:-translate-y-0.5"
+              >
+                {t.hero.ctaPrimary}
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a
+                href="#work"
+                className="h-14 sm:h-16 px-7 rounded-[1.25rem] border border-white/10 bg-white/[0.04] font-black text-lg inline-flex items-center justify-center text-white/92 hover:bg-white/[0.08] transition-colors"
+              >
+                {t.hero.ctaSecondary}
+              </a>
             </div>
-          ))}
+
+            <div className="intro-up intro-delay-4 grid grid-cols-2 md:grid-cols-4 gap-3.5">
+              {[
+                { label: t.hero.metric1, value: '2-10' },
+                { label: t.hero.metric2, value: '80%' },
+                { label: t.hero.metric3, value: '<12h' },
+                { label: t.hero.metric4, value: 'Year 1' },
+              ].map((metric) => (
+                <div key={metric.label} className="rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-4 sm:px-5 sm:py-5">
+                  <div className="text-2xl sm:text-3xl font-black text-crimson-500">{metric.value}</div>
+                  <div className="mt-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-white/45 font-black leading-snug">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4">
+            {cards.map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={card.title}
+                  className={`intro-up rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-5 sm:p-6 transition-all duration-300 hover:border-crimson-600/30 hover:bg-white/[0.06] ${
+                    index === 0 ? 'xl:translate-y-6' : index === 2 ? 'xl:-translate-y-6' : ''
+                  }`}
+                  style={{ animationDelay: `${0.15 + index * 0.08}s` }}
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-crimson-600/12 text-crimson-500 flex items-center justify-center mb-5">
+                    <Icon size={22} />
+                  </div>
+                  <div className="text-[10px] uppercase tracking-[0.28em] text-white/35 font-black mb-3">{card.eyebrow}</div>
+                  <h3 className="text-2xl sm:text-[1.9rem] font-black tracking-[-0.04em] leading-tight">{card.title}</h3>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Subtle Background Glows */}
-      <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-crimson-600/[0.03] blur-[150px] rounded-full animate-pulse-soft pointer-events-none"></div>
-      <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-crimson-600/[0.02] blur-[150px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-24 right-[8%] w-44 h-44 bg-crimson-600/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-[5%] w-52 h-52 bg-crimson-600/8 blur-[110px] rounded-full pointer-events-none" />
     </section>
   );
 };

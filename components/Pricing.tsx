@@ -2,12 +2,13 @@ import React from 'react';
 import { Check, Star, ArrowUpRight, Zap } from 'lucide-react';
 
 const Pricing: React.FC<{ t: any }> = ({ t }) => {
+  const f = t.pricing.features;
   const tiers = [
     {
       name: t.pricing.starter,
       price: "$2,900",
       weeks: "2-4",
-      features: ["Single Page App", "Next.js + Tailwind", "SEO Basic", "1 Month Support"],
+      features: [f.spa, f.nextTailwind, f.seoBasic, f.support1],
       cta: t.pricing.cta,
       popular: false
     },
@@ -15,7 +16,7 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
       name: t.pricing.growth,
       price: "$5,500",
       weeks: "4-8",
-      features: ["Full SaaS MVP", "Auth + Database", "Stripe Integration", "3 Months Support", "Analytics Setup"],
+      features: [f.fullMvp, f.authDb, f.stripe, f.support3, f.analytics],
       cta: t.pricing.cta,
       popular: true
     },
@@ -23,7 +24,7 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
       name: t.pricing.scale,
       price: "$12,000",
       weeks: "8-12",
-      features: ["Enterprise Architecture", "Design System", "Multi-tenant logic", "Dedicated DevOps", "Priority Support"],
+      features: [f.enterprise, f.designSystem, f.multiTenant, f.dedicatedDevops, f.prioritySupport],
       cta: t.pricing.cta,
       popular: false
     }
@@ -41,11 +42,11 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 relative z-10" data-scroll-stagger>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-0 sm:px-4 relative z-10" data-scroll-stagger>
         {tiers.map((tier, i) => (
           <div
             key={i}
-            className={`group relative glass rounded-[3rem] p-12 border transition-all duration-700 cursor-default ${tier.popular ? 'border-crimson-600/50 scale-105 z-10 shadow-[0_40px_100px_-20px_rgba(220,38,38,0.2)] hover:scale-[1.07]' : 'border-white/5 opacity-90 hover:opacity-100 hover:border-crimson-600/30 hover:scale-[1.02] hover:-translate-y-2'}`}
+            className={`group relative glass rounded-[3rem] p-8 sm:p-12 border transition-all duration-700 cursor-default ${tier.popular ? 'border-crimson-600/50 md:scale-105 z-10 shadow-[0_40px_100px_-20px_rgba(220,38,38,0.2)] hover:scale-[1.02] md:hover:scale-[1.07]' : 'border-white/5 opacity-90 hover:opacity-100 hover:border-crimson-600/30 hover:scale-[1.02] hover:-translate-y-2'}`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-crimson-600 text-white text-[10px] font-black uppercase px-6 py-2 rounded-full tracking-[0.2em] shadow-2xl flex items-center gap-2 animate-bounce">
@@ -57,7 +58,7 @@ const Pricing: React.FC<{ t: any }> = ({ t }) => {
               <h3 className="text-2xl font-black mb-2 tracking-tight group-hover:text-crimson-600 transition-colors duration-500">{tier.name}</h3>
               <div className="flex items-baseline gap-2">
                 <span className="text-5xl font-black text-crimson-600">{tier.price}</span>
-                <span className="text-sm opacity-40 font-bold uppercase tracking-widest">/ Project</span>
+                <span className="text-sm opacity-40 font-bold uppercase tracking-widest">{t.pricing.perProject}</span>
               </div>
             </div>
 

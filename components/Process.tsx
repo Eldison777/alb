@@ -9,7 +9,7 @@ const Process: React.FC<{ t: any }> = ({ t }) => {
             <div className="flex flex-col items-center text-center mb-16" data-scroll>
                 <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-[1px] bg-crimson-600"></div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-crimson-600">Workflow</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-crimson-600">{t.process.label}</span>
                     <div className="w-12 h-[1px] bg-crimson-600"></div>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-black tracking-tighter">
@@ -23,7 +23,7 @@ const Process: React.FC<{ t: any }> = ({ t }) => {
                     return (
                         <div
                             key={step.id}
-                            className="glass p-10 rounded-[2.5rem] border border-white/5 hover:border-crimson-600/40 transition-all duration-500 group relative overflow-hidden"
+                            className="glass p-6 sm:p-8 lg:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-white/5 hover:border-crimson-600/40 transition-all duration-500 group relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 w-32 h-32 bg-crimson-600/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 

@@ -1,263 +1,523 @@
-
 export const translations = {
   en: {
     nav: {
       services: "Services",
+      ai: "AI Automation",
       work: "Work",
+      community: "Community",
       team: "Team",
-      about: "About",
-      blog: "Blog",
+      blog: "Insights",
       faq: "FAQ",
       contact: "Contact",
-      cta: "Start a Project"
+      cta: "Start a Project",
     },
     hero: {
-      badge: "Performance-First Engineering",
-      headline: "Ship Scalable SaaS Products at Velocity",
-      subheadline: "We build enterprise-grade web applications and high-fidelity UI systems with sub-second performance and ironclad security.",
-      ctaPrimary: "Book a Call",
-      ctaSecondary: "View Work",
-      metric1: "Lighthouse Score",
-      metric2: "Avg. Uptime",
-      metric3: "Time to Market"
+      badge: "Software agency, AI automation, and tech community",
+      headline: "Build software people love. Automate the work they hate.",
+      subheadline:
+        "AlbShift designs high-trust digital products, deploys AI systems that remove operational drag, and grows a community around modern technology.",
+      ctaPrimary: "Book a Strategy Call",
+      ctaSecondary: "See Our Work",
+      metric1: "Weeks to launch",
+      metric2: "Automation coverage",
+      metric3: "Team response time",
+      metric4: "Community touchpoints",
+      highlights: [
+        "Custom platforms and internal tools",
+        "AI workflows, copilots, and business automations",
+        "Events, education, and ecosystem building",
+      ],
+      trust: ["Product teams", "Founders", "SMBs", "Community builders"],
     },
     impact: {
-      title: "80/20 Impact Model",
-      description: "We optimize for the 20% of engineering features that drive 80% of your business outcomes. Zero bloat, maximum conversion.",
-      pledge: "Impact Pledge: We donate 10% of our engineering cycles to open-source social impact projects.",
-      metrics: "320+ hours donated / year"
+      label: "Why AlbShift",
+      title: "A sharper operating model for ambitious teams",
+      description:
+        "We combine product strategy, engineering delivery, and AI workflow design so you can move faster without creating a mess behind the scenes.",
+      pledge:
+        "We invest part of our time into workshops, mentoring, and open knowledge that strengthens the regional tech ecosystem.",
+      metrics: "12+ events, talks, and sessions planned",
+      efficiency: "Focus",
+      transparency: "Operating principle",
+      chartLabel1: "High-impact systems",
+      chartLabel2: "Manual busywork",
+    },
+    bentoServices: {
+      label: "Core Offers",
+      heading1: "Three pillars",
+      heading2: "One serious partner",
+      desc:
+        "We help companies ship software, automate operations with AI, and create the programs that turn audiences into communities.",
+      readyYear: "Built for 2026",
+      techStandard: "Delivery standard",
     },
     services: {
-      saas: {
-        title: "SaaS Engineering",
-        desc: "Full-stack architecture optimized for multi-tenant scalability.",
-        bullets: ["Node/Python backend", "PostgreSQL/Redis systems"]
+      software: {
+        title: "Custom Software",
+        desc: "Web platforms, dashboards, portals, and internal systems designed around real workflows.",
+        bullets: ["React and TypeScript delivery", "Scalable backend architecture"],
       },
-      web: {
-        title: "Web Development",
-        desc: "High-performance marketing and web apps using Next.js.",
-        bullets: ["Core Web Vitals focus", "SEO-first architecture"]
+      automation: {
+        title: "AI Automation",
+        desc: "Automate repetitive work with AI assistants, workflow orchestration, and human-in-the-loop checks.",
+        bullets: ["Lead ops and support flows", "RAG, agents, and prompt systems"],
       },
-      ui: {
-        title: "UI Systems",
-        desc: "Scalable design systems that bridge Figma and Production.",
-        bullets: ["Atomic Design approach", "Component libraries"]
+      mvp: {
+        title: "MVP Launches",
+        desc: "Launch fast without building the wrong thing first.",
+        bullets: ["Roadmap and scoping", "Speed with quality controls"],
       },
-      devops: {
-        title: "DevOps & Cloud",
-        desc: "Automated CI/CD pipelines and infrastructure as code.",
-        bullets: ["AWS/Vercel/Docker", "Real-time monitoring"]
+      design: {
+        title: "Product Design",
+        desc: "High-clarity interfaces and design systems that keep products consistent as they scale.",
+        bullets: ["UX strategy and UI systems", "Figma to production handoff"],
       },
-      seo: {
-        title: "SEO & Performance",
-        desc: "Technical auditing and speed optimization for conversions.",
-        bullets: ["Sub-500ms TTFB", "Semantic HTML5"]
+      integration: {
+        title: "Cloud and Integrations",
+        desc: "Connect your stack, centralize data, and remove fragile handoffs between tools.",
+        bullets: ["APIs, CRM, ERP, payments", "Deployments and observability"],
       },
-      growth: {
-        title: "Maintenance & Growth",
-        desc: "Continuous iteration and long-term tech partnerships.",
-        bullets: ["Monthly retainers", "Security patching"]
-      }
+      community: {
+        title: "Tech Community Programs",
+        desc: "Events, content, and member experiences that help your brand become a technology magnet.",
+        bullets: ["Workshops and meetups", "Content and program ops"],
+      },
     },
-    team: {
-      title: "Meet the Architects",
-      subtitle: "A core team of specialized engineers and designers obsessed with performance and clarity.",
-      cta: "Join the Team"
+    automation: {
+      label: "AI In Action",
+      title: "Automation that saves hours, not slides that sound futuristic",
+      subtitle:
+        "We design AI systems around measurable workflows so your team gets speed, traceability, and confidence.",
+      cards: [
+        {
+          title: "Lead capture and qualification",
+          desc: "Route forms, score intent, enrich leads, and push the right opportunities into your CRM automatically.",
+        },
+        {
+          title: "Customer support copilots",
+          desc: "Give teams faster answers with knowledge assistants that summarize docs, tickets, and policies.",
+        },
+        {
+          title: "Reporting and back-office ops",
+          desc: "Automate recurring status reports, approvals, and data handoffs between disconnected tools.",
+        },
+      ],
+      checklist: [
+        "Clear business rules before model logic",
+        "Human review where trust matters",
+        "Dashboards that show what the AI did",
+        "Integrations with your existing stack",
+      ],
     },
     process: {
-      title: "Our Lifecycle",
+      label: "How We Work",
+      title: "From idea to durable system",
       steps: [
+        { id: "01", title: "Discover", desc: "We map goals, bottlenecks, users, and the workflows worth improving first." },
+        { id: "02", title: "Design", desc: "We shape the product, architecture, and automation logic before heavy build work starts." },
+        { id: "03", title: "Build", desc: "We ship in focused iterations with visible progress, clean code, and practical QA." },
+        { id: "04", title: "Launch and Improve", desc: "We deploy, measure, and refine the system so it keeps creating value after launch." },
+      ],
+    },
+    caseStudies: {
+      title: "Selected Work",
+      subtitle: "Products, systems, and digital experiences built for growth and clarity.",
+      viewAll: "Explore projects",
+      viewCase: "Open Case Study",
+    },
+    communitySection: {
+      label: "Community",
+      title: "Not just client work. We build momentum around technology.",
+      subtitle:
+        "AlbShift is designed to be both a delivery partner and a community engine through events, education, and collaborative programs.",
+      stats: [
+        { value: "4", label: "Program formats" },
+        { value: "12", label: "Planned sessions" },
+        { value: "100+", label: "Builders to connect" },
+      ],
+      pillars: [
         {
-          id: "01",
-          title: "Architecture",
-          desc: "Defining the blueprint for infinite scale."
+          title: "Workshops",
+          desc: "Hands-on sessions on AI tooling, product thinking, engineering workflows, and practical implementation.",
         },
         {
-          id: "02",
-          title: "Development",
-          desc: "Rapid prototyping and production coding."
+          title: "Founder and builder network",
+          desc: "A place for teams, developers, and operators to exchange tactics, opportunities, and lessons learned.",
         },
         {
-          id: "03",
-          title: "QA & Audit",
-          desc: "Stress testing and security hardening."
+          title: "Content that teaches",
+          desc: "Guides, recaps, and short-form insights that make complex technical decisions easier to act on.",
         },
-        {
-          id: "04",
-          title: "Launch",
-          desc: "Global deployment with 99.9% uptime."
-        }
-      ]
+      ],
+    },
+    blog: {
+      label: "Insights",
+      title: "What we are learning in software, AI, and community building",
+      subtitle: "Useful thinking for product teams, operators, and technology leaders.",
+      filterAll: "All",
+      filterTech: "Build",
+      filterDesign: "AI",
+      filterImpact: "Community",
+    },
+    team: {
+      label: "Team",
+      title: "Built by people who care about outcomes and craft",
+      subtitle:
+        "We bring product thinking, engineering discipline, and operational empathy to every engagement.",
+      cta: "Join the movement",
+      ctaDesc: "We are always open to collaborators, speakers, and sharp builders.",
+      applyNow: "Say Hello",
+    },
+    faq: {
+      label: "FAQ",
+      title: "Questions clients usually ask before we start",
+      subtitle: "A few practical answers on timelines, AI automation, delivery, and long-term support.",
     },
     contact: {
+      label: "Email",
+      locationLabel: "Base",
+      location: "Prishtina and remote",
+      selectRange: "Select range...",
+      budget1: "$3k - $8k",
+      budget2: "$8k - $20k",
+      budget3: "$20k+",
+      placeholder: "Tell us what you want to build, automate, or launch...",
       form: {
         name: "Full Name",
         email: "Email Address",
         company: "Company / Organization",
         budget: "Budget Range",
         message: "Project Brief",
-        submit: "Send Inquiry",
-        successTitle: "Message Sent!",
-        successText: "We'll get back to you in record time.",
+        submit: "Send Project Inquiry",
+        successTitle: "Message Sent",
+        successText: "We will review it and reply as quickly as possible.",
         errorText: "Something went wrong. Please try again.",
-        another: "Send another"
+        another: "Send another",
       },
       sidebar: {
-        title: "Ready to ship your next big idea?",
-        desc: "We respond to all inquiries within 12 hours. Let's discuss your roadmap and see if we're a fit.",
-        bookCall: "Book a strategy call",
-        callTime: "30 min video meeting"
-      }
+        title: "Ready to build, automate, or activate your community?",
+        desc: "Tell us where the friction is. We can help you scope the right product, workflow, or launch plan.",
+        bookCall: "Book a discovery call",
+        callTime: "30 minute strategy session",
+      },
     },
     footer: {
-      ctaTitle: "Start your transformation today",
-      ctaSub: "Join 20+ scaling companies powered by AlbShift engineering.",
-      newsletter: "Subscribe to our engineering insights",
+      ctaTitle: "Turn ambition into a system that works",
+      ctaSub: "Software, AI automation, and community design under one roof.",
+      newsletter: "Join the AlbShift circle",
       subscribe: "Join",
-      subSuccess: "Thanks for joining!",
-      rights: "© 2025 AlbShift Digital. All rights reserved. Made with ❤️ in Prishtina."
+      subSuccess: "Thanks for joining",
+      brandDesc:
+        "AlbShift is a software agency helping teams design products, automate workflows with AI, and build stronger technology communities.",
+      colCompany: "Company",
+      colExpertise: "Expertise",
+      colLegal: "Legal",
+      aboutUs: "Why AlbShift",
+      ourTeam: "Team",
+      careers: "Insights",
+      contactLink: "Contact",
+      saasBuild: "Software",
+      devops: "Automation",
+      uiDesign: "Design",
+      growthLink: "Community",
+      privacy: "Privacy",
+      terms: "Terms",
+      security: "Security",
+      subscribeError: "Subscription failed. Please try again.",
+      connectionError: "Something went wrong. Please check your connection.",
+      rights: "Copyright 2026 AlbShift. All rights reserved.",
+      tagline1: "Software",
+      tagline2: "AI Automation",
+      tagline3: "Community",
     },
     pricing: {
-      badge: "Transparent Value",
-      title: "Productized Packages",
-      desc: "High-velocity engineering with fixed scopes. No scope creep, no hidden costs.",
-      starter: "Starter MVP",
-      growth: "Growth SaaS",
-      scale: "Enterprise Scale",
+      badge: "Ways To Work Together",
+      title: "Productized packages for teams that want momentum",
+      desc: "Clear scopes for launches, automation, and long-term delivery support.",
+      starter: "Launch Sprint",
+      growth: "Automation Build",
+      scale: "Product Partner",
       timeline: "Timeline",
       weeks: "Weeks",
-      cta: "Get Started",
-      topChoice: "Top Choice"
-    }
+      cta: "Start This Package",
+      topChoice: "Best Fit",
+      perProject: "/ project",
+      features: {
+        spa: "Strategy workshop and landing page or MVP scope",
+        nextTailwind: "Modern frontend foundation",
+        seoBasic: "Analytics and basic SEO setup",
+        support1: "Two weeks support",
+        fullMvp: "AI workflow and automation design",
+        authDb: "Integrations with core tools",
+        stripe: "Internal dashboard or ops interface",
+        support3: "One month optimization support",
+        analytics: "Monitoring and reporting",
+        enterprise: "Dedicated product and engineering partner",
+        designSystem: "Ongoing roadmap delivery",
+        multiTenant: "Automation opportunities mapped each cycle",
+        dedicatedDevops: "Infrastructure and release support",
+        prioritySupport: "Priority collaboration and advisory access",
+      },
+    },
   },
   sq: {
     nav: {
-      services: "Shërbimet",
+      services: "Sherbime",
+      ai: "AI",
       work: "Puna",
+      community: "Komuniteti",
       team: "Ekipi",
-      about: "Rreth Nesh",
-      blog: "Blog",
+      blog: "Ide",
       faq: "Pyetje",
       contact: "Kontakt",
-      cta: "Fillo Projektin"
+      cta: "Fillo Projektin",
     },
     hero: {
-      badge: "Inxhinieri e Fokusuar te Performanca",
-      headline: "Ndërtoni Produkte SaaS me Shpejtësi Skajore",
-      subheadline: "Ne ndërtojmë aplikacione web të nivelit enterprise dhe sisteme UI me performancë maksimale dhe siguri të lartë.",
-      ctaPrimary: "Rezervo Thirrje",
-      ctaSecondary: "Shih Punën",
-      metric1: "Pikët Lighthouse",
-      metric2: "Kohëzgjatja Online",
-      metric3: "Koha në Treg"
+      badge: "Software agency, AI automation, dhe tech community",
+      headline: "Nderto software me vlere. Automatizo punen qe lodh ekipin.",
+      subheadline:
+        "AlbShift krijon produkte digitale, sisteme AI per operacione me te shpejta, dhe programe komunitare rreth teknologjise moderne.",
+      ctaPrimary: "Rezervo Nje Call",
+      ctaSecondary: "Shih Punet",
+      metric1: "Jave deri ne launch",
+      metric2: "Mbulim automatizimi",
+      metric3: "Koha e pergjigjes",
+      metric4: "Prekje komunitare",
+      highlights: [
+        "Platforma custom dhe internal tools",
+        "AI workflows, copilots, dhe automations",
+        "Evente, edukim, dhe community building",
+      ],
+      trust: ["Produkte", "Founders", "Biznese", "Komunitete"],
     },
     impact: {
-      title: "Modeli i Impaktit 80/20",
-      description: "Ne optimizojmë 20% të funksionaliteteve që sjellin 80% të vlerës për biznesin tuaj. Pa mbingarkesë, konvertim maksimal.",
-      pledge: "Zotimi: Ne dhurojmë 10% të kohës sonë inxhinierike për projekte open-source me ndikim social.",
-      metrics: "320+ orë të dhuruara / vit"
+      label: "Pse AlbShift",
+      title: "Nje model pune me i forte per ekipe ambicioze",
+      description:
+        "Ne bashkojme strategji produkti, engineering delivery, dhe AI workflow design qe ju te levizni me shpejt pa krijuar kaos.",
+      pledge:
+        "Nje pjese te kohes tone e investojme ne workshope, mentoring, dhe dije te hapur per ekosistemin tech.",
+      metrics: "12+ evente dhe sesione te planifikuara",
+      efficiency: "Fokus",
+      transparency: "Parim pune",
+      chartLabel1: "Sisteme me impakt",
+      chartLabel2: "Pune manuale",
+    },
+    bentoServices: {
+      label: "Ofertat Kryesore",
+      heading1: "Tre shtylla",
+      heading2: "Nje partner serioz",
+      desc:
+        "Ju ndihmojme te ndertoni software, te automatizoni operacionet me AI, dhe te krijoni programe komunitare qe terheqin njerezit e duhur.",
+      readyYear: "Gati per 2026",
+      techStandard: "Standard pune",
     },
     services: {
-      saas: {
-        title: "SaaS Engineering",
-        desc: "Arkitekturë Full-stack e optimizuar për rritje multi-tenant.",
-        bullets: ["Backend Node/Python", "Sisteme PostgreSQL/Redis"]
+      software: {
+        title: "Custom Software",
+        desc: "Platforma web, dashboarde, portale, dhe sisteme te brendshme per workflows reale.",
+        bullets: ["Delivery me React dhe TypeScript", "Arkitekture backend e shkallezueshme"],
       },
-      web: {
-        title: "Zhvillim Web",
-        desc: "Faqe marketingu dhe aplikacione web me performancë të lartë.",
-        bullets: ["Fokus te Core Web Vitals", "Arkitekturë SEO-first"]
+      automation: {
+        title: "AI Automation",
+        desc: "Automatizoni punet repetitive me asistente AI, workflow orchestration, dhe kontrolle njerezore.",
+        bullets: ["Lead ops dhe support flows", "RAG, agents, dhe prompt systems"],
       },
-      ui: {
-        title: "Sisteme UI",
-        desc: "Sisteme dizajni që lidhin Figma-n me Prodhimin.",
-        bullets: ["Qasje Atomic Design", "Librari komponentësh"]
+      mvp: {
+        title: "MVP Launches",
+        desc: "Dilni ne treg shpejt pa ndertuar gjejen e gabuar.",
+        bullets: ["Scoping dhe roadmap", "Shpejtesi me kontroll cilesie"],
       },
-      devops: {
-        title: "DevOps & Cloud",
-        desc: "Automatizim i CI/CD dhe infrastrukturë si kod.",
-        bullets: ["AWS/Vercel/Docker", "Monitorim në kohë reale"]
+      design: {
+        title: "Product Design",
+        desc: "Interface te qarta dhe design systems qe mbajne produktin konsistent ne rritje.",
+        bullets: ["UX strategy dhe UI systems", "Figma ne production"],
       },
-      seo: {
-        title: "SEO & Performancë",
-        desc: "Audit teknik dhe optimizim shpejtësie.",
-        bullets: ["Nën-500ms TTFB", "HTML5 Semantik"]
+      integration: {
+        title: "Cloud dhe Integrime",
+        desc: "Lidhni stack-un tuaj, centralizoni te dhenat, dhe hiqni handoff-et e dobeta mes tools.",
+        bullets: ["API, CRM, ERP, payments", "Deployments dhe observability"],
       },
-      growth: {
-        title: "Mirëmbajtje & Rritje",
-        desc: "Partneritet afatgjatë për iterim dhe rritje.",
-        bullets: ["Retainers mujorë", "Patching sigurie"]
-      }
+      community: {
+        title: "Tech Community Programs",
+        desc: "Evente, content, dhe eksperienca per anetaret qe e bejne brandin tuaj nje magnet per teknologji.",
+        bullets: ["Workshope dhe meetups", "Content dhe program ops"],
+      },
     },
-    team: {
-      title: "Njihuni me Arkitektët",
-      subtitle: "Një ekip bërthamë inxhinierësh dhe dizajnerësh të specializuar, të fiksuar pas performancës dhe qartësisë.",
-      cta: "Bashkohu me Ekipin"
+    automation: {
+      label: "AI Ne Pune",
+      title: "Automatizim qe kursen ore, jo vetem prezantime futuriste",
+      subtitle:
+        "Ne dizajnojme sisteme AI rreth workflows te matshem qe ekipi juaj te kete shpejtesi, gjurmim, dhe besim.",
+      cards: [
+        {
+          title: "Lead capture dhe qualification",
+          desc: "Rutoni format, vleresoni intent-in, pasuroni lead-et, dhe dergojini ne CRM automatikisht.",
+        },
+        {
+          title: "Customer support copilots",
+          desc: "Jepuni ekipeve pergjigje me te shpejta me asistente qe permbledhin docs, tickets, dhe politika.",
+        },
+        {
+          title: "Reporting dhe ops te brendshme",
+          desc: "Automatizoni raporte, aprovime, dhe handoff-e te te dhenave mes tools te ndryshme.",
+        },
+      ],
+      checklist: [
+        "Rregulla biznesi te qarta para logjikes se modelit",
+        "Rishikim njerezor aty ku besimi ka rendesi",
+        "Dashboarde qe tregojne cfare beri AI",
+        "Integrime me stack-un ekzistues",
+      ],
     },
     process: {
-      title: "Cikli ynë",
+      label: "Si Punojme",
+      title: "Nga ideja ne sistem te qendrueshem",
       steps: [
+        { id: "01", title: "Zbulojme", desc: "Kuplojme qellimet, pengesat, perdoruesit, dhe workflows me vlere me te larte." },
+        { id: "02", title: "Dizajnojme", desc: "Formojme produktin, arkitekturen, dhe logjiken e automatizimit para ndertimit te rende." },
+        { id: "03", title: "Ndertojme", desc: "Shperndajme iterime te fokusuara me progres te dukshem, kod te paster, dhe QA praktik." },
+        { id: "04", title: "Lansojme dhe Permiresojme", desc: "Bejme deploy, masim, dhe rafinojme sistemin qe te vazhdoje te jape vlere." },
+      ],
+    },
+    caseStudies: {
+      title: "Pune Te Zgjedhura",
+      subtitle: "Produkte, sisteme, dhe eksperienca digitale per rritje dhe qartesi.",
+      viewAll: "Shih projektet",
+      viewCase: "Hap rastin",
+    },
+    communitySection: {
+      label: "Komuniteti",
+      title: "Jo vetem pune me kliente. Ndertojme momentum rreth teknologjise.",
+      subtitle:
+        "AlbShift eshte edhe partner delivery edhe motor komuniteti permes eventeve, edukimit, dhe programeve bashkepunuese.",
+      stats: [
+        { value: "4", label: "Formate programesh" },
+        { value: "12", label: "Sesione te planifikuara" },
+        { value: "100+", label: "Builders per t'u lidhur" },
+      ],
+      pillars: [
         {
-          id: "01",
-          title: "Arkitektura",
-          desc: "Përcaktimi i projektit për shkallëzim pafund."
+          title: "Workshope",
+          desc: "Sesione praktike mbi AI tooling, product thinking, engineering workflows, dhe implementim real.",
         },
         {
-          id: "02",
-          title: "Zhvillimi",
-          desc: "Prototipizim i shpejtë dhe kodim profesional."
+          title: "Rrjet founders dhe builders",
+          desc: "Nje vend ku ekipet, developers, dhe operators ndajne taktika, mundesi, dhe mesime.",
         },
         {
-          id: "03",
-          title: "QA & Audit",
-          desc: "Testim stresi dhe forcim i sigurisë."
+          title: "Content qe meson",
+          desc: "Guida, permbledhje, dhe ide te shkurtra qe i bejne vendimet teknike me te lehta.",
         },
-        {
-          id: "04",
-          title: "Lançimi",
-          desc: "Deplojim global me 99.9% disponueshmëri."
-        }
-      ]
+      ],
+    },
+    blog: {
+      label: "Ide",
+      title: "Cfare po mesojme ne software, AI, dhe community building",
+      subtitle: "Mendim i dobishem per product teams, operators, dhe leaders te teknologjise.",
+      filterAll: "Te gjitha",
+      filterTech: "Build",
+      filterDesign: "AI",
+      filterImpact: "Community",
+    },
+    team: {
+      label: "Ekipi",
+      title: "Ndertuar nga njerez qe kujdesen per rezultatet dhe craft-in",
+      subtitle: "Sjellim product thinking, engineering discipline, dhe empati operacionale ne cdo angazhim.",
+      cta: "Bashkohu",
+      ctaDesc: "Jemi gjithmone hapur per bashkepunetore, foles, dhe builders te forte.",
+      applyNow: "Pershendetje",
+    },
+    faq: {
+      label: "Pyetje",
+      title: "Pyetje qe klientet bejne zakonisht para se te fillojme",
+      subtitle: "Pergjigje praktike per afatet, AI automation, delivery, dhe suportin afatgjate.",
     },
     contact: {
+      label: "Email",
+      locationLabel: "Baza",
+      location: "Prishtine dhe remote",
+      selectRange: "Zgjidh intervalin...",
+      budget1: "$3k - $8k",
+      budget2: "$8k - $20k",
+      budget3: "$20k+",
+      placeholder: "Na trego cfare deshiron te ndertosh, automatizosh, ose lansosh...",
       form: {
-        name: "Emri i Plotë",
-        email: "Adresa Email",
-        company: "Kompania",
-        budget: "Gama e Buxhetit",
-        message: "Përshkrimi i Projektit",
-        submit: "Dërgo Kërkesën",
-        successTitle: "Mesazhi u Dërgua!",
-        successText: "Ne do t'ju kontaktojmë në kohë rekord.",
-        errorText: "Diçka shkoi keq. Ju lutem provoni përsëri.",
-        another: "Dërgo tjetër"
+        name: "Emri i plote",
+        email: "Email",
+        company: "Kompania / Organizata",
+        budget: "Buxheti",
+        message: "Pershkrimi i projektit",
+        submit: "Dergo Kerkesen",
+        successTitle: "Mesazhi U Dergua",
+        successText: "Do ta shqyrtojme dhe do te pergjigjemi shpejt.",
+        errorText: "Dicka shkoi keq. Ju lutem provoni perseri.",
+        another: "Dergo nje tjeter",
       },
       sidebar: {
-        title: "Gati për të lançuar idenë tuaj?",
-        desc: "Ne u përgjigjemi të gjitha pyetjeve brenda 12 orëve. Le të diskutojmë rrugëtimin tuaj.",
-        bookCall: "Rezervo thirrje strategjike",
-        callTime: "30 min takim video"
-      }
+        title: "Gati te ndertosh, automatizosh, ose aktivizosh komunitetin tend?",
+        desc: "Na trego ku eshte friksioni. Mund te ndihmojme me produktin, workflow-n, ose planin e launch-it.",
+        bookCall: "Rezervo nje discovery call",
+        callTime: "Seance strategjie 30 minuta",
+      },
     },
     footer: {
-      ctaTitle: "Filloni transformimin tuaj sot",
-      ctaSub: "Bashkohuni me 20+ kompani që fuqizohen nga inxhinieria AlbShift.",
-      newsletter: "Abonohuni për njohuri inxhinierike",
-      subscribe: "Join",
-      subSuccess: "Faleminderit!",
-      rights: "© 2025 AlbShift Digital. All rights reserved. Prishtinë."
+      ctaTitle: "Kthe ambicien ne nje sistem qe funksionon",
+      ctaSub: "Software, AI automation, dhe community design nen nje kulm.",
+      newsletter: "Hyr ne rrethin AlbShift",
+      subscribe: "Bashkohu",
+      subSuccess: "Faleminderit",
+      brandDesc:
+        "AlbShift eshte nje software agency qe ndihmon ekipet te dizajnojne produkte, te automatizojne workflows me AI, dhe te ndertojne komunitete me te forta teknologjike.",
+      colCompany: "Kompania",
+      colExpertise: "Ekspertiza",
+      colLegal: "Ligjore",
+      aboutUs: "Pse AlbShift",
+      ourTeam: "Ekipi",
+      careers: "Ide",
+      contactLink: "Kontakt",
+      saasBuild: "Software",
+      devops: "Automation",
+      uiDesign: "Design",
+      growthLink: "Community",
+      privacy: "Privatesia",
+      terms: "Termat",
+      security: "Siguria",
+      subscribeError: "Regjistrimi deshtoi. Provo perseri.",
+      connectionError: "Dicka shkoi keq. Kontrollo lidhjen.",
+      rights: "Copyright 2026 AlbShift. Te gjitha te drejtat e rezervuara.",
+      tagline1: "Software",
+      tagline2: "AI Automation",
+      tagline3: "Community",
     },
     pricing: {
-      badge: "Vlerë Transparente",
-      title: "Paketat e Produkteve",
-      desc: "Inxhinieri me shpejtësi të lartë dhe kosto fikse. Pa kosto të fshehura.",
-      starter: "Starter MVP",
-      growth: "Growth SaaS",
-      scale: "Enterprise Scale",
-      timeline: "Afati",
-      weeks: "Javë",
-      cta: "Fillo Tani",
-      topChoice: "Zgjedhja Kryesore"
-    }
-  }
+      badge: "Menyra Bashkepunimi",
+      title: "Paketa te qarta per ekipe qe duan momentum",
+      desc: "Scope te qarta per launches, automation, dhe delivery afatgjate.",
+      starter: "Launch Sprint",
+      growth: "Automation Build",
+      scale: "Product Partner",
+      timeline: "Kohezgjatja",
+      weeks: "Jave",
+      cta: "Fillo Kete Pakete",
+      topChoice: "Zgjedhja Kryesore",
+      perProject: "/ projekt",
+      features: {
+        spa: "Workshop strategjie dhe landing page ose MVP scope",
+        nextTailwind: "Frontend modern",
+        seoBasic: "Analytics dhe SEO baze",
+        support1: "Dy jave support",
+        fullMvp: "AI workflow dhe automation design",
+        authDb: "Integrime me tools kryesore",
+        stripe: "Dashboard i brendshem ose ops interface",
+        support3: "Nje muaj support optimizimi",
+        analytics: "Monitoring dhe reporting",
+        enterprise: "Partner i dedikuar produkti dhe engineering",
+        designSystem: "Delivery i vazhdueshem i roadmap-it",
+        multiTenant: "Mundesi automatizimi ne cdo cikel",
+        dedicatedDevops: "Infra dhe release support",
+        prioritySupport: "Bashkepunim prioritar dhe keshillim",
+      },
+    },
+  },
 };

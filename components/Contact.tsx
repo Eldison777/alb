@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Send, Calendar, Mail, MapPin, AlertCircle } from 'lucide-react';
 
 const Contact: React.FC<{ t: any }> = ({ t }) => {
-  const [form, setForm] = useState({ name: '', email: '', company: '', budget: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', company: '', budget: '', message: '', website_url: '' });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -13,7 +13,7 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
     setStatus('idle');
 
     try {
-      const apiUrl = (import.meta as any).env.VITE_API_URL || 'http://localhost:3001';
+      const apiUrl = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -25,23 +25,13 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
         setTimeout(() => {
           setStatus('success');
           setIsTransitioning(false);
-          setForm({ name: '', email: '', company: '', budget: '', message: '' });
+          setForm({ name: '', email: '', company: '', budget: '', message: '', website_url: '' });
         }, 400); // Matches fade-out duration
       } else {
         throw new Error('API Error');
       }
     } catch (err) {
-      console.error(err);
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-        setStatus('error');
-      } else {
-        setIsTransitioning(true);
-        setTimeout(() => {
-          setStatus('success');
-          setIsTransitioning(false);
-          setForm({ name: '', email: '', company: '', budget: '', message: '' });
-        }, 1000);
-      }
+      setStatus('error');
     } finally {
       setLoading(false);
     }
@@ -71,7 +61,7 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
               <Mail size={20} />
             </div>
             <div>
-              <p className="text-xs uppercase font-bold opacity-40">Email Us</p>
+              <p className="text-xs uppercase font-bold opacity-40">{t.contact.label}</p>
               <p className="font-bold">hello@albshift.com</p>
             </div>
           </div>
@@ -80,20 +70,23 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
               <MapPin size={20} />
             </div>
             <div>
-              <p className="text-xs uppercase font-bold opacity-40">Location</p>
-              <p className="font-bold">Prishtina, Kosovo (GMT+1)</p>
+              <p className="text-xs uppercase font-bold opacity-40">{t.contact.locationLabel}</p>
+              <p className="font-bold">{t.contact.location}</p>
             </div>
           </div>
         </div>
 
         <div className="pt-12">
-          <button className="flex items-center gap-3 px-6 py-4 glass rounded-2xl hover:bg-white/5 transition-all group">
+          <a
+            href="mailto:hello@albshift.com?subject=AlbShift%20Discovery%20Call"
+            className="inline-flex items-center gap-3 px-6 py-4 glass rounded-2xl hover:bg-white/5 transition-all group"
+          >
             <Calendar className="text-crimson-600" />
             <div className="text-left">
               <p className="font-bold group-hover:text-crimson-600 transition-colors">{t.contact.sidebar.bookCall}</p>
               <p className="text-xs opacity-40">{t.contact.sidebar.callTime}</p>
             </div>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -115,6 +108,15 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                type="text"
+                name="website_url"
+                value={form.website_url}
+                onChange={e => setForm({ ...form, website_url: e.target.value })}
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase opacity-40 px-1">{t.contact.form.name}</label>
@@ -157,10 +159,10 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
                       onChange={e => setForm({ ...form, budget: e.target.value })}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors appearance-none cursor-pointer"
                     >
-                      <option value="" disabled>Select range...</option>
-                      <option value="5-10k">$5k - $10k</option>
-                      <option value="10-25k">$10k - $25k</option>
-                      <option value="25k+">$25k+</option>
+                      <option value="" disabled>{t.contact.selectRange}</option>
+                      <option value="5-10k">{t.contact.budget1}</option>
+                      <option value="10-25k">{t.contact.budget2}</option>
+                      <option value="25k+">{t.contact.budget3}</option>
                     </select>
                     <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none opacity-40">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -176,7 +178,7 @@ const Contact: React.FC<{ t: any }> = ({ t }) => {
                   value={form.message}
                   onChange={e => setForm({ ...form, message: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-crimson-600/50 transition-colors resize-none"
-                  placeholder="Tell us about your goals..."
+                  placeholder={t.contact.placeholder}
                 />
               </div>
 

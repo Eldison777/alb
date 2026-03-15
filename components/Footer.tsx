@@ -3,29 +3,36 @@ import { Twitter, Linkedin, Github, ArrowRight, Loader2, CheckCircle2 } from 'lu
 
 const Footer: React.FC<{ t: any }> = ({ t }) => {
   const [email, setEmail] = useState('');
+  const [websiteUrl, setWebsiteUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setLoading(true);
+    setError('');
+
     try {
-      const res = await fetch('http://localhost:3001/api/subscribe', {
+      const apiUrl = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
+      const res = await fetch(`${apiUrl}/api/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website_url: websiteUrl }),
       });
+
+      const data = await res.json();
+
       if (res.ok) {
         setSubscribed(true);
         setEmail('');
+      } else {
+        setError(data.error || t.footer.subscribeError);
       }
     } catch (err) {
-      setTimeout(() => {
-        setSubscribed(true);
-        setEmail('');
-      }, 1000);
+      setError(t.footer.connectionError);
     } finally {
       setLoading(false);
     }
@@ -35,7 +42,7 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
     <footer className="px-6 md:px-12 pb-12 pt-32">
       <div className="max-w-7xl mx-auto">
         {/* Main CTA Section - Matching Screenshot */}
-        <div className="glass rounded-[3rem] p-12 md:p-20 border border-crimson-600/20 mb-32 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left relative overflow-hidden group">
+        <div className="glass rounded-[3rem] p-12 md:p-20 border border-crimson-600/20 mb-16 md:mb-32 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left relative overflow-hidden group">
           <div className="relative z-10 space-y-4">
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none">
               {t.footer.ctaTitle}<span className="text-crimson-600">.</span>
@@ -56,19 +63,14 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
         </div>
 
         {/* Footer Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-16 mb-20 md:mb-32">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-8">
-            <a href="#" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-crimson-600 rounded-lg flex items-center justify-center font-black text-white text-xl">
-                A
-              </div>
-              <span className="font-extrabold tracking-tight text-2xl">
-                AlbShift<span className="text-crimson-600">.</span>
-              </span>
+            <a href="#home" className="flex items-center gap-3">
+              <img src="/albshift_logo.svg" alt="AlbShift" className="h-12 w-auto object-contain" />
             </a>
             <p className="opacity-40 text-base leading-relaxed max-w-sm">
-              Premium engineering studio delivering high-performance SaaS solutions and UI systems for the next generation of digital products.
+              {t.footer.brandDesc}
             </p>
 
             {/* Newsletter Subscription */}
@@ -82,53 +84,65 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
                   {t.footer.subSuccess}
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-2 max-w-sm p-1.5 glass rounded-2xl border border-white/5 focus-within:border-crimson-600/30 transition-all">
-                  <input
-                    required
-                    type="email"
-                    placeholder="name@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-grow bg-transparent border-none rounded-xl px-4 py-2 text-sm font-medium focus:ring-0 focus:outline-none placeholder:opacity-40"
-                  />
-                  <button
-                    disabled={loading}
-                    className="px-6 py-2.5 bg-crimson-600 text-white rounded-[0.8rem] font-black text-sm hover:bg-crimson-700 transition-all disabled:opacity-50 shadow-lg shadow-crimson-600/20"
-                  >
-                    {loading ? <Loader2 size={16} className="animate-spin" /> : t.footer.subscribe}
-                  </button>
-                </form>
+                <div>
+                  <form onSubmit={handleSubscribe} className="flex gap-2 max-w-sm p-1.5 glass rounded-2xl border border-white/5 focus-within:border-crimson-600/30 transition-all">
+                    <input
+                      type="text"
+                      name="website_url"
+                      value={websiteUrl}
+                      onChange={(e) => setWebsiteUrl(e.target.value)}
+                      style={{ display: 'none' }}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                    <input
+                      required
+                      type="email"
+                      placeholder="name@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-grow bg-transparent border-none rounded-xl px-4 py-2 text-sm font-medium focus:ring-0 focus:outline-none placeholder:opacity-40"
+                    />
+                    <button
+                      disabled={loading}
+                      className="px-6 py-2.5 bg-crimson-600 text-white rounded-[0.8rem] font-black text-sm hover:bg-crimson-700 transition-all disabled:opacity-50 shadow-lg shadow-crimson-600/20"
+                    >
+                      {loading ? <Loader2 size={16} className="animate-spin" /> : t.footer.subscribe}
+                    </button>
+                  </form>
+                  {error && <p className="text-red-500 text-xs mt-2 pl-2 font-medium">{error}</p>}
+                </div>
               )}
             </div>
           </div>
 
           {/* Link Columns */}
           <div className="space-y-8">
-            <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">Company</h4>
+            <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">{t.footer.colCompany}</h4>
             <ul className="space-y-5 text-sm font-bold opacity-60">
-              <li><a href="#about" className="hover:text-crimson-600 transition-colors">About Us</a></li>
-              <li><a href="#team" className="hover:text-crimson-600 transition-colors">Our Team</a></li>
-              <li><a href="#blog" className="hover:text-crimson-600 transition-colors">Careers</a></li>
-              <li><a href="#contact" className="hover:text-crimson-600 transition-colors">Contact</a></li>
+              <li><a href="#about" className="hover:text-crimson-600 transition-colors">{t.footer.aboutUs}</a></li>
+              <li><a href="#team" className="hover:text-crimson-600 transition-colors">{t.footer.ourTeam}</a></li>
+              <li><a href="#blog" className="hover:text-crimson-600 transition-colors">{t.footer.careers}</a></li>
+              <li><a href="#contact" className="hover:text-crimson-600 transition-colors">{t.footer.contactLink}</a></li>
             </ul>
           </div>
 
           <div className="space-y-8">
-            <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">Expertise</h4>
+            <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">{t.footer.colExpertise}</h4>
             <ul className="space-y-5 text-sm font-bold opacity-60">
-              <li><a href="#services" className="hover:text-crimson-600 transition-colors">SaaS Build</a></li>
-              <li><a href="#services" className="hover:text-crimson-600 transition-colors">DevOps</a></li>
-              <li><a href="#services" className="hover:text-crimson-600 transition-colors">UI Design</a></li>
-              <li><a href="#services" className="hover:text-crimson-600 transition-colors">Growth</a></li>
+              <li><a href="#services" className="hover:text-crimson-600 transition-colors">{t.footer.saasBuild}</a></li>
+              <li><a href="#ai" className="hover:text-crimson-600 transition-colors">{t.footer.devops}</a></li>
+              <li><a href="#services" className="hover:text-crimson-600 transition-colors">{t.footer.uiDesign}</a></li>
+              <li><a href="#community" className="hover:text-crimson-600 transition-colors">{t.footer.growthLink}</a></li>
             </ul>
           </div>
 
           <div className="space-y-8">
-            <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">Legal</h4>
+            <h4 className="font-black text-xs uppercase tracking-[0.2em] opacity-30">{t.footer.colLegal}</h4>
             <ul className="space-y-5 text-sm font-bold opacity-60">
-              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">Privacy</a></li>
-              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">Terms</a></li>
-              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">Security</a></li>
+              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">{t.footer.privacy}</a></li>
+              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">{t.footer.terms}</a></li>
+              <li><a href="#faq" className="hover:text-crimson-600 transition-colors">{t.footer.security}</a></li>
             </ul>
           </div>
         </div>
@@ -140,15 +154,15 @@ const Footer: React.FC<{ t: any }> = ({ t }) => {
               {t.footer.rights}
             </p>
             <div className="hidden md:flex gap-4">
-              <a href="#" className="p-2 glass rounded-lg hover:text-crimson-600 transition-colors"><Twitter size={16} /></a>
-              <a href="#" className="p-2 glass rounded-lg hover:text-crimson-600 transition-colors"><Linkedin size={16} /></a>
-              <a href="#" className="p-2 glass rounded-lg hover:text-crimson-600 transition-colors"><Github size={16} /></a>
+              <a href="#" className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center glass rounded-lg hover:text-crimson-600 transition-colors"><Twitter size={16} /></a>
+              <a href="#" className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center glass rounded-lg hover:text-crimson-600 transition-colors"><Linkedin size={16} /></a>
+              <a href="#" className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center glass rounded-lg hover:text-crimson-600 transition-colors"><Github size={16} /></a>
             </div>
           </div>
           <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.3em] opacity-20">
-            <span className="hover:opacity-100 transition-opacity cursor-default">Engineering Excellence</span>
-            <span className="hover:opacity-100 transition-opacity cursor-default">Performance First</span>
-            <span className="hover:opacity-100 transition-opacity cursor-default">Scale Ready</span>
+            <span className="hover:opacity-100 transition-opacity cursor-default">{t.footer.tagline1}</span>
+            <span className="hover:opacity-100 transition-opacity cursor-default">{t.footer.tagline2}</span>
+            <span className="hover:opacity-100 transition-opacity cursor-default">{t.footer.tagline3}</span>
           </div>
         </div>
       </div>

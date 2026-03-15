@@ -1,6 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, Globe, Menu, Moon, Sun, X } from 'lucide-react';
 
 interface NavbarProps {
   lang: string;
@@ -12,121 +11,164 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ lang, toggleLang, theme, toggleTheme, t }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const closeMobileMenu = () => {
-    setIsAnimatingOut(true);
-    setTimeout(() => {
-      setMobileOpen(false);
-      setIsAnimatingOut(false);
-    }, 400); // Duration matches animate-reveal-down
-  };
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
 
   const navItems = [
-    { name: t.nav.services, href: "#services" },
-    { name: t.process.title, href: "#process" },
-    { name: t.nav.work, href: "#work" },
-    { name: t.nav.team, href: "#team" },
-    { name: t.pricing.title, href: "#pricing" },
-    { name: t.nav.blog, href: "#blog" },
+    { label: t.nav.services, href: '#services', index: '01' },
+    { label: t.nav.ai, href: '#ai', index: '02' },
+    { label: t.nav.work, href: '#work', index: '03' },
+    { label: t.nav.community, href: '#community', index: '04' },
+    { label: t.nav.team, href: '#team', index: '05' },
+    { label: t.nav.blog, href: '#blog', index: '06' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${scrolled ? 'py-4' : 'py-8'}`}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className={`glass rounded-2xl flex items-center justify-between px-6 py-2 border dark:border-white/10 border-black/10 transition-all duration-700 ${scrolled ? 'shadow-2xl dark:bg-obsidian/90 bg-white/90 py-1' : 'shadow-xl'}`}>
-          {/* Logo Section */}
-          <a href="#" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-9 h-9 bg-crimson-600 rounded-lg flex items-center justify-center font-black text-white text-lg transition-transform group-hover:scale-105">
-              A
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'py-3' : 'py-4 sm:py-5'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="glass rounded-[1.5rem] border dark:border-white/10 border-black/10 px-4 sm:px-5 py-3 flex items-center justify-between">
+            <a href="#home" className="flex items-center shrink-0">
+              <img src="/albshift_logo.svg" alt="AlbShift" className="h-8 sm:h-9 w-auto object-contain" />
+            </a>
+
+            <div className="hidden lg:flex items-center gap-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-bold tracking-tight opacity-70 hover:opacity-100 hover:text-crimson-600 transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
-            <span className="font-extrabold tracking-tighter text-xl dark:text-white text-slate-900 transition-colors">
-              AlbShift<span className="text-crimson-600">.</span>
-            </span>
-          </a>
 
-          {/* Centered Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-bold opacity-60 hover:opacity-100 dark:text-white text-slate-900 transition-all tracking-tight hover:text-crimson-600"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-
-          {/* Right Controls */}
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 sm:gap-2">
               <button
                 onClick={toggleLang}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors flex items-center gap-2 group"
+                className="w-11 h-11 rounded-xl flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 aria-label="Toggle Language"
               >
-                <Globe size={18} className="opacity-50 group-hover:opacity-100 transition-opacity" />
-                <span className="text-xs font-black uppercase opacity-60 group-hover:opacity-100">{lang}</span>
+                <Globe size={17} className="opacity-75" />
               </button>
               <button
                 onClick={toggleTheme}
-                className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-all"
+                className="w-11 h-11 rounded-xl flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 aria-label="Toggle Theme"
               >
-                {theme === 'dark' ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+                {theme === 'dark' ? <Sun size={17} className="text-amber-400" /> : <Moon size={17} className="text-slate-700" />}
+              </button>
+              <a
+                href="#contact"
+                className="hidden md:inline-flex items-center justify-center px-5 py-3 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white text-sm font-black transition-colors"
+              >
+                {t.nav.cta}
+              </a>
+              <button
+                className="lg:hidden w-11 h-11 rounded-xl flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(true)}
+                aria-label="Open mobile menu"
+              >
+                <Menu size={22} />
               </button>
             </div>
+          </div>
+        </div>
+      </nav>
 
+      <div
+        className={`lg:hidden fixed inset-0 z-[130] transition-all duration-300 ${
+          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div
+          className={`absolute inset-0 bg-[#090909]/96 transition-opacity duration-300 ${
+            mobileOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+        <div
+          className={`absolute inset-0 px-5 pt-5 pb-8 flex flex-col transition-transform duration-300 ease-out ${
+            mobileOpen ? 'translate-y-0' : '-translate-y-6'
+          }`}
+        >
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <img src="/albshift_logo.svg" alt="AlbShift" className="h-9 w-auto object-contain mb-3" />
+              <p className="text-[10px] uppercase tracking-[0.35em] text-crimson-600 font-black">Build. Automate. Gather.</p>
+            </div>
+            <button
+              className="w-14 h-14 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close mobile menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-[1fr_auto] gap-3 mb-8">
+            <button
+              onClick={toggleLang}
+              className="h-14 rounded-2xl border border-white/10 bg-white/5 px-5 text-left font-black tracking-tight"
+            >
+              {lang === 'en' ? 'English' : 'Shqip'}
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="w-14 h-14 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun size={20} className="text-amber-400" /> : <Moon size={20} />}
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="group flex items-center justify-between rounded-[1.6rem] border border-white/10 bg-white/[0.04] px-5 py-5"
+              >
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-white/35 font-black mb-2">{item.index}</div>
+                  <div className="text-[1.85rem] leading-none font-black tracking-[-0.04em]">{item.label}</div>
+                </div>
+                <ArrowRight size={20} className="text-white/30 group-hover:text-crimson-600 transition-colors" />
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-auto pt-8">
+            <div className="rounded-[1.8rem] border border-crimson-600/20 bg-crimson-600/8 p-5 mb-4">
+              <p className="text-lg font-black tracking-tight mb-2">For ambitious teams building products and momentum.</p>
+              <p className="text-sm text-white/60 leading-relaxed">
+                Software systems, AI automation, and community experiences designed to make your brand more useful and more visible.
+              </p>
+            </div>
             <a
               href="#contact"
-              className="hidden sm:block px-6 py-2.5 bg-crimson-600 hover:bg-crimson-700 text-white rounded-[1rem] text-sm font-black transition-all shadow-lg shadow-crimson-600/20 active:scale-95 whitespace-nowrap"
+              onClick={() => setMobileOpen(false)}
+              className="h-14 rounded-[1.4rem] bg-crimson-600 text-white flex items-center justify-center text-base font-black"
             >
               {t.nav.cta}
             </a>
-
-            <button
-              className="md:hidden p-2 opacity-60 hover:opacity-100"
-              onClick={() => mobileOpen ? closeMobileMenu() : setMobileOpen(true)}
-            >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className={`md:hidden absolute top-full left-0 right-0 px-6 pt-3 ${isAnimatingOut ? 'animate-reveal-down' : 'animate-reveal-up'}`}>
-          <div className="glass rounded-[2rem] border dark:border-white/10 border-black/10 shadow-2xl flex flex-col p-8 gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-xl font-black tracking-tight border-b dark:border-white/5 border-black/5 pb-4 hover:text-crimson-600 transition-colors"
-                onClick={closeMobileMenu}
-              >
-                {item.name}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              className="w-full text-center px-6 py-4 bg-crimson-600 text-white rounded-[1rem] font-black text-lg shadow-2xl shadow-crimson-600/30"
-              onClick={closeMobileMenu}
-            >
-              {t.nav.cta}
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 
